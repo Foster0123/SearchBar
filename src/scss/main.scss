@@ -1,0 +1,98 @@
+// Imports -------------------------------------------------------------
+
+// Global Settings -------------------------------------------------------------
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+.App {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+.search-bar {
+    display: grid;
+    grid-gap: 15px;
+    align-items: center;
+    justify-content: center;
+}
+.form {
+  display: grid;
+  grid-template-columns: 1fr 35px;
+  column-gap: 15px;
+  align-items: center;
+}
+.search-box {
+  padding: 10px;
+  font-size: 1.1em;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  width: 100%;
+  background-color: orangered;
+  box-shadow: 0px 0px 15px red;
+  font-family: "Open Sans", sans-serif;
+  color: white;
+
+  &::placeholder {
+    color: white;
+  }
+}
+.search-submit-btn {
+  outline: none;
+  border: none;
+  background: none;
+  background-color: skyblue;
+  padding: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 10px cyan;
+
+  i {
+    position: relative;
+    &::before {
+      color: white;
+      font-size: 1.5em;
+      width: 25px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}
+.search-menu {
+    color: white;
+    list-style: none;
+    display: grid;
+    border-radius: 5px;
+    grid-template-rows: 1fr;
+    grid-gap: 5px;
+    max-height: 300px;
+    max-width: 300px;
+    overflow-y: auto;
+    background-color: blanchedalmond;
+    padding: 10px 5px 10px 10px;
+    &::-webkit-scrollbar {
+        width: 5px;
+    }
+    li {
+        font-size: 1.1em;
+        height: 30px;
+        background-color: deeppink;
+        padding: 5px;
+        border-radius: 5px;
+        font-family: "Roboto", sans-serif;
+    }
+}
