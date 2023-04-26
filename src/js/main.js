@@ -1,28 +1,38 @@
 const searchBox = document.getElementById("search-box")
 const searchBtn = document.getElementById("search-submit-btn")
 const searchMenu = document.getElementById("search-menu")
+const form = document.getElementById("form")
 
-const url = "https://restcountries.com/v3.1/all"
-const regex = new RegExp(/S/gm);
+const itemTemplate = document.querySelector("[data-search-item-template]")
+const itemContainer = document.querySelector("[data-user-container]")
 
-searchBox.addEventListener('input', (e) => {
-  let val = e.target.value;
+const url = "https://jsonplaceholder.typicode.com/users"
 
+let users = []
+
+searchBox.addEventListener("input", (e) => {
+    const value = e.target.value.toLowerCase();
+    users.forEach(user => {
+        const isVisible = 
+        user.name.toLowerCase().includes(value) || 
+        user.email.toLowerCase().includes(value)
+        
+        user.element.classList.toggle("hide", !isVisible)
+    })
 })
 
 fetch(url)
-.then((res) => {
-  return res.json()
-})
-.then((result) => {
-  country = result.map((entry) => {
-    return {name: entry.name.common}
-  })
-})
-.catch((err) => {
-  console.error(err)
-}) 
-
-searchBtn.addEventListener("click", () =>{})
-
-  
+    .then(res => res.json())
+    .then(data => {
+        users = data.map(item => {
+            const card = itemTemplate.content.cloneNode(true).children[0]
+            const header = card.querySelector("[data-header]")
+            const body = card.querySelector("[data-body]")
+            
+            header.textContent = item.name
+            body.textContent = item.email
+            itemContainer.append(card)
+            return { name: item.name, email: item.email, element: card }
+        })
+    
+    })

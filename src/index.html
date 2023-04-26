@@ -15,7 +15,7 @@
 <body>
   <div class="App">
     <section class="search-bar">
-      <form autocomplete="off" action="" class="form">
+      <form autocomplete="off" action="" class="form" id="form">
         <div class="autocomplete">
           <input
             id="search-box"
@@ -29,11 +29,16 @@
           <i class="bi bi-search"></i>
         </button>
       </form>
-      <ul class="search-menu" id="search-menu">
-      </ul>
+      <ul class="search-menu" id="search-menu" data-user-container></ul>
+      <template data-search-item-template>
+            <li class="search-menu-item">
+                <a class="search-menu-item-title" href="#" data-header></a>
+                <p class="search-menu-item-content" data-body></p>
+            </li>
+        </template>
     </section>
   </div>
 
-  <script defer src="./js/main.js"></script>
+  <script async defer src="./js/main.js"></script>
 </body>
 </html>

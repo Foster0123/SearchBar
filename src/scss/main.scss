@@ -1,6 +1,9 @@
-// Imports -------------------------------------------------------------
-
-// Global Settings -------------------------------------------------------------
+:root {
+  --default-background: rgba(0,0,0,0.85);
+  --default-foreground: whitesmoke;
+  --accent-color-1: orange;
+  --accent-color-2: blanchedalmond
+}
 * {
   padding: 0;
   margin: 0;
@@ -32,6 +35,9 @@ html {
   column-gap: 15px;
   align-items: center;
 }
+.hide {
+  display: none;
+}
 .search-box {
   padding: 10px;
   font-size: 1.1em;
@@ -39,29 +45,29 @@ html {
   border: none;
   outline: none;
   width: 100%;
-  background-color: orangered;
-  box-shadow: 0px 0px 15px red;
+  background-color: var(--accent-color-1);
+  box-shadow: 0px 0px 15px var(--accent-color-1);
   font-family: "Open Sans", sans-serif;
-  color: white;
+  color: var(--default-foreground);
 
   &::placeholder {
-    color: white;
+    color: var(--default-foreground);
   }
 }
 .search-submit-btn {
   outline: none;
   border: none;
   background: none;
-  background-color: skyblue;
+  background-color: var(--accent-color-1);
   padding: 20px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 10px cyan;
+  box-shadow: 0 0 10px var(--accent-color-1);
 
   i {
     position: relative;
     &::before {
-      color: white;
+      color: var(--default-foreground);
       font-size: 1.5em;
       width: 25px;
       height: 20px;
@@ -73,26 +79,42 @@ html {
   }
 }
 .search-menu {
-    color: white;
+    color: antiquewhite;
     list-style: none;
     display: grid;
-    border-radius: 5px;
-    grid-template-rows: 1fr;
+    border-radius: 10px;
+    grid-template-rows: repeat(auto-fill, 50px);
     grid-gap: 5px;
-    max-height: 300px;
+    height: 300px;
     max-width: 300px;
     overflow-y: auto;
-    background-color: blanchedalmond;
-    padding: 10px 5px 10px 10px;
+    background-color: var(--accent-color-2);
+    padding: 10px;
+    scrollbar-width: none;
     &::-webkit-scrollbar {
-        width: 5px;
+        display: none;
     }
     li {
         font-size: 1.1em;
-        height: 30px;
-        background-color: deeppink;
+        background-color: var(--default-background);
         padding: 5px;
         border-radius: 5px;
+        height: 50px;
         font-family: "Roboto", sans-serif;
+        transition: box-shadow 200ms ease-in-out;
+        cursor: pointer;
+        &:hover {
+          transition: box-shadow 200ms ease-in-out;
+          box-shadow:0 0 10px var(--default-background);
+        }
+        a {
+          color: var(--accent-color-1);
+          text-decoration: none;
+        }
+        p {
+          font-size: smaller;
+          font-weight: bold;
+          font-family: "calibri", sans-serif;
+        }
     }
 }
